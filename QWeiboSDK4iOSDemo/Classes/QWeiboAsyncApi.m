@@ -7,8 +7,8 @@
 //
 
 #import "QWeiboAsyncApi.h"
-#import "QOauthKey.h"
-#import "QweiboRequest.h"
+#import "OAuthKey.h"
+#import "OAuthRequest.h"
 
 
 @implementation QWeiboAsyncApi
@@ -24,7 +24,7 @@
 	
 	NSString *url = @"http://open.t.qq.com/api/statuses/home_timeline";
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.tokenKey = aAccessTokenKey;
@@ -44,7 +44,7 @@
 	[parameters setObject:[NSString stringWithFormat:@"%d", aPageFlag] forKey:@"pageflag"];
 	[parameters setObject:[NSString stringWithFormat:@"%d", aReqNum] forKey:@"reqnum"];
 	
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSURLConnection *connection = [request asyncRequestWithUrl:url httpMethod:@"GET" oauthKey:oauthKey parameters:parameters files:nil delegate:aDelegate];
 	
 	[request release];
@@ -71,7 +71,7 @@
 		url = @"http://open.t.qq.com/api/t/add";
 	}
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.tokenKey = aAccessTokenKey;
@@ -90,7 +90,7 @@
 	[parameters setObject:aContent forKey:@"content"];
 	[parameters setObject:@"127.0.0.1" forKey:@"clientip"];
 	
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSURLConnection *connection = [request asyncRequestWithUrl:url httpMethod:@"POST" oauthKey:oauthKey parameters:parameters files:files delegate:aDelegate];
 	
 	[request release];

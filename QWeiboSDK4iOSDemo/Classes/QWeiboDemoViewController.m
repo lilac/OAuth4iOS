@@ -10,7 +10,7 @@
 #import "QWeiboSDK4iOSDemoAppDelegate.h"
 #import "QWeiboSyncApi.h"
 #import "QWeiboResultViewController.h"
-#import "NSString+QEncoding.h"
+#import "NSString+Encoding.h"
 #import "QWeiboAsyncApi.h"
 #import "QLoadingView.h"
 

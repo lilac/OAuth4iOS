@@ -7,8 +7,8 @@
 //
 
 #import "QWeiboSyncApi.h"
-#import "QOauthKey.h"
-#import "QWeiboRequest.h"
+#import "OAuthKey.h"
+#import "OAuthRequest.h"
 
 
 @implementation QWeiboSyncApi
@@ -21,12 +21,12 @@
 	
 	NSString *url = @"https://open.t.qq.com/cgi-bin/request_token";//for example
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.callbackUrl = @"http://www.qq.com";//for example
 	
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSString *retString = [request syncRequestWithUrl:url httpMethod:@"GET" oauthKey:oauthKey parameters:nil files:nil];
 	
 	[request release];
@@ -42,14 +42,14 @@
 	
 	NSString *url = @"https://open.t.qq.com/cgi-bin/access_token";
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.tokenKey = aRequestTokenKey;
 	oauthKey.tokenSecret= aRequestTokenSecret;
 	oauthKey.verify = aVerify;
 	
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSString *retString = [request syncRequestWithUrl:url httpMethod:@"GET" oauthKey:oauthKey parameters:nil files:nil];
 	
 	[request release];
@@ -67,7 +67,7 @@
 	
 	NSString *url = @"http://open.t.qq.com/api/statuses/home_timeline";
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.tokenKey = aAccessTokenKey;
@@ -87,7 +87,7 @@
 	[parameters setObject:[NSString stringWithFormat:@"%d", aPageFlag] forKey:@"pageflag"];
 	[parameters setObject:[NSString stringWithFormat:@"%d", aReqNum] forKey:@"reqnum"];
 		
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSString *retString = [request syncRequestWithUrl:url httpMethod:@"GET" oauthKey:oauthKey parameters:parameters files:nil];
 	
 	[request release];
@@ -113,7 +113,7 @@
 		url = @"http://open.t.qq.com/api/t/add";
 	}
 	
-	QOauthKey *oauthKey = [[QOauthKey alloc] init];
+	OAuthKey *oauthKey = [[OAuthKey alloc] init];
 	oauthKey.consumerKey = aConsumerKey;
 	oauthKey.consumerSecret = aConsumerSecret;
 	oauthKey.tokenKey = aAccessTokenKey;
@@ -132,7 +132,7 @@
 	[parameters setObject:aContent forKey:@"content"];
 	[parameters setObject:@"127.0.0.1" forKey:@"clientip"];
 	
-	QWeiboRequest *request = [[QWeiboRequest alloc] init];
+	OAuthRequest *request = [[OAuthRequest alloc] init];
 	NSString *retString = [request syncRequestWithUrl:url httpMethod:@"POST" oauthKey:oauthKey parameters:parameters files:files];
 	
 	[request release];

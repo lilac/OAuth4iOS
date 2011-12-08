@@ -8,7 +8,7 @@
 
 #import "QWeiboSDK4iOSDemoAppDelegate.h"
 #import "QWeiboSDK4iOSDemoViewController.h"
-#import "NSURL+QAdditions.h"
+#import "NSURL+Additions.h"
 
 #define AppKey			@"appKey"
 #define AppSecret		@"appSecret"
